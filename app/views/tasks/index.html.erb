@@ -9,8 +9,7 @@
 
 <%= form_tag tasks_path, :method => 'get' do %>
     <div class="form-group">
-    <label for="exampleFormControlInput1">Domain</label><br>
-    
+      <label for="exampleFormControlInput1">Domain</label><br>
       <%= select_tag :search,  options_for_select(['Rails','Postgres','Ruby','IT']),onchange: 'this.form.submit();',  class: "form_control",:include_blank => true  %>
     </div>
 <%end%>

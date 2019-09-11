@@ -10,21 +10,29 @@
       <li class="nav-item active">
         <%= link_to "Archives", archive_show_archive_path , class: "nav-link" %> <span class="sr-only">(current)</span>
       </li>
-     
+      <%end%>
       	
-      <li class="nav-item">
-      	<%= link_to "Sign out", destroy_user_session_path , method: :DELETE , class: "nav-link" %>
-      </li>
-      	<%else%>
-      	<li class="nav-item active">
-			<%= link_to "Sign up", new_user_registration_path , class: "nav-link"  %>
-		</li>
-		<li class="nav-item active">
-			<%= link_to "Sign in", new_user_session_path , class: "nav-link"  %>
-		</li>
-		<%end%>
     </ul>
-    
+    <%if current_user %>
+      <form class="form-inline my-2 my-lg-0">
+        <%= link_to "Sign out", destroy_user_session_path , method: :DELETE , class: "btn btn-outline-primary" %>
+      </form>
+    <%else%>
+      <form class="form-inline my-2 my-lg-0">
+        <table>
+          <tr>
+            <td>
+              <%= link_to "Sign in", new_user_session_path ,  class: "nav-link"  %>
+            </td>
+            <td>
+              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0"  %>
+              
+            </td>
+          </tr>
+        </table>
+      </form>
+    <%end%>
+
 
   </div>
 </nav>
