@@ -1,0 +1,13 @@
+<div class="container">
+	<%if current_user %>
+		<h1>This is the best task manager ever !</h1>
+	<%else%>	
+	 	<h1>This is the best task manager ever ! <br> <%= link_to "Sign up", new_user_registration_path,class: "badge badge-success"%></h1>
+	 <%end%>
+
+</div>
+
+			
+
+
+

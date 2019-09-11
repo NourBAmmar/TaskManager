@@ -1,0 +1,38 @@
+<h1>Archives </h1>
+<%= form_tag tasks_path, :method => 'get' do %>
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Domain</label><br>
+    
+      <%= select_tag :search,  options_for_select(['Rails','Postgres','Ruby','IT']),onchange: 'this.form.submit();',  class: "form_control",:include_blank => true  %>
+    </div>
+<%end%>
+
+
+<%= link_to "Show All", tasks_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Title</th>
+      <th scope="col">Body</th>
+      <th scope="col">User</th>
+      <th scope="col">Domain</th>
+      <th scope="col">Date</th>
+      <th scope="col">#</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.body %></td>
+      <td><%= task.user_id %></td>
+      <td><%= task.domain %></td>
+      <td> <%= task.completed_at %>
+      <td><%= link_to 'Show', task_path(task) %></td>
+    </tr>     
+    <%end%>
+  </tbody>
+</table>

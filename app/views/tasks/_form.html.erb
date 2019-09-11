@@ -1,0 +1,36 @@
+
+<%= form_for @task do |form| %>
+  <div class="form-group">
+    <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+ 
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title ,class: "form-control", placeholder: "Développer en rails" %>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Body</label>
+    <%= form.text_area :body ,class: "form-control", placeholder: "rails new task"%>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Domain</label><br>
+    <%= form.select :domain ,['Rails','Postgres','Ruby','IT'], {}, { class: "form-control"} %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

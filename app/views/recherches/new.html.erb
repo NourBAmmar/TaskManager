@@ -1,0 +1,16 @@
+ <%= form_for @recherche, html: {class:"pure-form"} do |s| %>
+  <% if @recherche.search_tasks.empty? %>
+    <p> no records found </p>
+  <%end%>
+    <div class="field">
+      <%= s.label :keywords %> <br>
+      <%= s.text_field :keywords %>
+    </div>
+    <div class="field">
+      <%= s.label :category %> <br>
+      <%= s.select :category,  options_for_select(@categories || ['Rails','Postgres','Ruby','IT']), :include_blank => true %>
+    </div>
+    <div class="actions">
+    <%= s.submit "Search" %>
+    </div>
+    <%end%>

@@ -1,0 +1,40 @@
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Title</th>
+      <th scope="col">Body</th>
+      <th scope="col">User</th>
+      <th scope="col">Domain</th>
+      <th scope="col">#</th>
+      <th scope="col">#</th>
+      <th scope="col">#</th>
+      <th scope="col">#</th>
+
+    </tr>
+  </thead>
+  <%if @recherche.search_tasks.empty%>
+  <tbody>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.body %></td>
+      <td><%= task.user_id %></td>
+      <td><%= task.domain %></td>
+      <%if(current_user.id==task.user_id)%>
+        <td><%= link_to 'Show', task_path(task) %></td>
+        <td><%= link_to "Mark as complete", complete_task_path(task), method: :patch%></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      <%else%>
+        <td></td>        
+        <td></td>
+        <td></td>
+        <td></td>
+      <%end%>
+
+    </tr>     
+    <%end%>
+  </tbody>
+  <%end%>
+</table>
